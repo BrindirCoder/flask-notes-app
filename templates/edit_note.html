@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edit Note</title>
+
+<style>
+    body {
+        font-family: "Poppins", sans-serif;
+        background: #f3f5f7;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 550px;
+        margin: 80px auto;
+        background: #ffffff;
+        padding: 40px;
+        border-radius: 22px;
+        box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+    }
+
+    h2 { text-align:center; font-size:28px; margin-bottom:20px; }
+
+    label { font-size:15px; font-weight:600; color:#555; }
+
+    input, textarea {
+        width:100%; padding:14px; margin:10px 0 20px 0;
+        border-radius:12px; border:1px solid #ddd;
+        background:#fafafa;
+    }
+
+    textarea { min-height:150px; resize:vertical; }
+
+    .btn-save {
+        width:100%; padding:14px; background:#4a6cf7;
+        color:white; border:none; border-radius:12px;
+        cursor:pointer;
+    }
+
+    .btn-back { display:block; margin-top:20px; text-align:center; }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Edit Note</h2>
+
+    {% if not item %}
+        <div style="padding:20px; background:#fff0f0; border-radius:10px; color:#900;">
+            Note not found.
+        </div>
+    {% else %}
+        <form method="POST" action="{{ url_for('edit_note', id=item.id) }}">
+
+            <label>Title</label>
+            <input type="text" name="title" value="{{ item.title }}" required>
+
+            <label>Content</label>
+            <textarea name="content" required>{{ item.content }}</textarea>
+
+            <button class="btn-save" type="submit">Save Changes</button>
+        </form>
+
+        <a class="btn-back" href="{{ url_for('index') }}">← Back to Notes</a>
+    {% endif %}
+</div>
+
+</body>
+</html>

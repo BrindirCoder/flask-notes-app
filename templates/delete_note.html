@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All Notes - Delete</title>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: "Poppins", sans-serif;
+        background: #f3f5f7;
+    }
+
+    .container {
+        max-width: 700px;
+        margin: 50px auto;
+        padding: 20px;
+    }
+
+    h2 {
+        text-align: center;
+        color: #2c3e50;
+        margin-bottom: 20px;
+    }
+
+    /* Pretty Back Button */
+    .back-btn {
+        display: inline-block;
+        background: #3498db;
+        color: white;
+        padding: 10px 18px;
+        border-radius: 10px;
+        text-decoration: none;
+        font-size: 14px;
+        margin-bottom: 20px;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        transition: 0.2s;
+    }
+
+    .back-btn:hover {
+        background: #2980b9;
+    }
+
+    .note-card {
+        background: white;
+        padding: 20px;
+        border-radius: 15px;
+        margin-top: 20px;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        transition: 0.25s ease;
+    }
+
+    .note-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    }
+
+    .note-title {
+        font-size: 20px;
+        color: #2c3e50;
+        margin-bottom: 5px;
+    }
+
+    .note-date {
+        font-size: 13px;
+        color: #8e8e8e;
+        margin-bottom: 10px;
+    }
+
+    .action-box {
+        text-align: right;
+        margin-top: 10px;
+    }
+
+    .btn-delete {
+        padding: 8px 16px;
+        background: #e74c3c;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 14px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .btn-delete:hover {
+        background: #c0392b;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Back to Home Button -->
+    <a href="{{ url_for('index') }}" class="back-btn">← Back to Home</a>
+
+    <h2>All Notes</h2>
+
+    {% for n in notes %}
+    <div class="note-card">
+        <div class="note-title">{{ n.title }}</div>
+        <div class="note-date">
+            {% if n.date.__class__.__name__ == 'datetime' %}
+                {{ n.date.strftime('%Y-%m-%d %H:%M') }}
+            {% else %}
+                {{ n.date }}
+            {% endif %}
+        </div>
+
+        <div class="action-box">
+            <form method="POST" action="{{ url_for('delete_note', id=n.id) }}" style="display:inline;">
+                <button type="submit" class="btn-delete">Delete</button>
+            </form>
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+
+</body>
+</html>

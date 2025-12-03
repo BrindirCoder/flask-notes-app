@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Home Page</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+    background: #f0f3f7;
+  }
+
+  .container {
+    max-width: 500px;
+    margin: 100px auto;
+    padding: 40px 30px;
+    background: #fff;
+    border-radius: 25px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: 0.3s ease;
+  }
+
+  .container:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 45px rgba(0,0,0,0.12);
+  }
+
+  h2 {
+    margin-bottom: 35px;
+    font-size: 32px;
+    color: #2c3e50;
+  }
+
+  /* Buttons */
+  .btn {
+    display: block;
+    width: 100%;
+    padding: 14px 0;
+    margin: 12px 0;
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff;
+    background: #4a6cf7;
+    text-decoration: none;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+  }
+
+  .btn:hover {
+    background: #3a58d1;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  }
+
+  .btn-yellow {
+    background: #f7b400;
+    color: #111;
+  }
+
+  .btn-yellow:hover {
+    background: #d39a00;
+    color: #fff;
+  }
+
+  .btn-danger {
+    background: #ff4b4b;
+  }
+
+  .btn-danger:hover {
+    background: #d83a3a;
+  }
+
+  /* Icon-style optional */
+  .btn i {
+    margin-right: 8px;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h2>📒 Welcome to Note App</h2>
+    <a href="{{url_for('add_note')}}" class="btn"><i>➕</i> Add Note</a>
+    <a href="{{ url_for('all_notes') }}" class="btn"><i>📄</i> Show All Notes</a>
+    <a href="{{url_for('show_note_to_delete')}}" class="btn btn-danger"><i>🗑️</i> Delete Note</a>  
+    <a href="{{url_for('note_detail')}}" class="btn"><i>🔍</i> Note Detail</a>
+    <a href="{{url_for('sorte_note')}}" class="btn btn-yellow"><i>📅</i> Sort Notes by Date</a>
+  </div>
+</body>
+</html>
