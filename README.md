@@ -32,7 +32,7 @@ project/
 
 🛠️ Installation & Setup
 1. Clone the repository
-git clone https://github.com/your-username/flask-notes-app.git
+git clone https://github.com/BrindirCoder/flask-notes-app.git
 cd flask-notes-app
 
 2. Create a virtual environment
